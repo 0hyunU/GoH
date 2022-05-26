@@ -1,4 +1,4 @@
-# GoH(Guardian of Heart)
+# goh(Guardian of Heart)
 
 A new Flutter project.
 
