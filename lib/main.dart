@@ -1,31 +1,47 @@
-// Copyright 2019 the Dart project authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license
-// that can be found in the LICENSE file.
-
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:simgum/constants.dart';
-import 'package:simgum/Dashboard.dart';
+import 'package:goh/screens/home_screen.dart';
+import 'package:goh/utils/const.dart';
+import 'package:csv/csv.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:async';
 
-import 'package:simgum/LoginPage.dart';
+// void main() => print("hi");
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    // final input = new File('assets/data.csv').openRead();
+    // final fields = input
+    //     .transform(utf8.decoder)
+    //     .transform(new CsvToListConverter())
+    //     .toList();
+    // print(fields);
+    // var a = CSV();
+    // print(a);
     return MaterialApp(
+      title: Constants.appName,
+      theme: Constants.lighTheme(context),
       debugShowCheckedModeBanner: false,
-      title: 'HURT : Health of yoUR hearT',
-      theme: ThemeData(
-        primaryColor: Colors.green,
-      ),
-      home: LoginScreen(), //Dashbaord(),
+      home: HomeScreen(),
     );
   }
 }
 
+PlatformFile? selectedFile;
+Future selectCSVFile() async {
+  FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: false,
+      withData: true,
+      type: FileType.custom,
+      allowedExtensions: ['csv']);
+
+  if (result != null) {
+    selectedFile = result.files.first;
+  } else {
+    selectedFile = null;
+  }
+}

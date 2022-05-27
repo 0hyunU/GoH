@@ -1,9 +1,6 @@
-# goh(Guardian of Heart)
+# goh
 
 A new Flutter project.
-
-## App Design Template from
-[Medical App Freebies!](https://dribbble.com/shots/11196293-Medical-App-Freebies)
 
 ## Getting Started
 
