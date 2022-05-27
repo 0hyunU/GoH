@@ -41,6 +41,7 @@ dependencies:
   file_picker: ^4.5.1
   cloud_firestore: ^3.1.16
   syncfusion_flutter_charts: ^20.1.56
+  firebase_core: ^1.6.0
   
 
 dev_dependencies:
