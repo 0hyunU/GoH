@@ -8,6 +8,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,8 +18,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  final _filepath =
-      "/Users/0hyun/Desktop/flutter/flutter_test_proj/goh/goh/assets/icons/data.csv";
 
   String? _filename;
 
@@ -35,10 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    getFromCSV();
+    // getFromCSV("");
   }
 
-  Future<void> getFromCSV() async {
+  Future<void> getFromCSV(String _filepath) async {
     final filename = await DefaultAssetBundle.of(context).loadString(_filepath);
     setState(() {
       _filename = filename;
