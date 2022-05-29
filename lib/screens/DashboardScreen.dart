@@ -15,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
         stream: db.collection('ECG').orderBy('datetime').snapshots(),
         builder: (context, snapshotECG) {
           Map<String, dynamic>? dataLatestECG =
-                  snapshotECG.data?.docs.last.data() as Map<String, dynamic>?;
+              snapshotECG.data?.docs.last.data() as Map<String, dynamic>?;
           bool isLoadingECG = !snapshotECG.hasData;
           return StreamBuilder<QuerySnapshot>(
             stream: db.collection('BP').orderBy('datetime').snapshots(),
@@ -70,7 +70,8 @@ class DashboardScreen extends StatelessWidget {
                               height: 140,
                               child: CardMainWidget(
                                   bp: isLoadingBP ? "" : dataLatestBP!['bp'],
-                                  pulse: isLoadingBP ? "" : dataLatestBP!['pulse'],
+                                  pulse:
+                                      isLoadingBP ? "" : dataLatestBP!['pulse'],
                                   hasData: !isLoadingBP)),
                           SizedBox(height: 30),
                           // Scheduled Activities
@@ -119,7 +120,11 @@ class DashboardScreen extends StatelessWidget {
                                               .map((e) => CardSection(
                                                   pulse_val: e['pulse'],
                                                   bp_val: e['bp'])))
-                                          : <Widget>[ CardSection(bp_val: "No Data",pulse_val:"No Data")],
+                                          : <Widget>[
+                                              CardSection(
+                                                  bp_val: "No Data",
+                                                  pulse_val: "No Data")
+                                            ],
                                     )),
                                 SizedBox(height: 30),
                                 Text(
@@ -135,10 +140,17 @@ class DashboardScreen extends StatelessWidget {
                                     height: 125,
                                     child: ListView(
                                       scrollDirection: Axis.horizontal,
-                                      children: !isLoadingECG?
-                                      List<Widget>.from(snapshotECG.data!.docs.reversed.map(
-                                        (e) => CardSection(bp_val:e['class'],pulse_val:e["class"])))
-                                        :<Widget>[CardSection(bp_val:"loading data ECG",pulse_val:"loading data ECG")],
+                                      children: !isLoadingECG
+                                          ? List<Widget>.from(snapshotECG
+                                              .data!.docs.reversed
+                                              .map((e) => CardSection(
+                                                  bp_val: e['class'],
+                                                  pulse_val: e["class"])))
+                                          : <Widget>[
+                                              CardSection(
+                                                  bp_val: "loading data ECG",
+                                                  pulse_val: "loading data ECG")
+                                            ],
                                     )),
                               ])),
                         ]),
