@@ -5,14 +5,14 @@ import 'package:goh/widgets/custom_clipper.dart';
 import 'package:goh/widgets/card_main.dart';
 
 class CardSection extends StatelessWidget {
-  final int bp_val;
-  final String hhmg_val;
+  final String pulse_val;
+  final String bp_val;
   // final String unit;
   // final String time;
   // final ImageProvider image;
   // final bool isDone;
 
-  CardSection({Key? key, required this.bp_val, required this.hhmg_val
+  CardSection({Key? key, required this.pulse_val, required this.bp_val
       // required this.value,
       // required this.unit,
       // required this.time,
@@ -77,7 +77,7 @@ class CardSection extends StatelessWidget {
                                 width: 75,
                               ),
                               Text(
-                                '$bp_val',
+                                '$pulse_val',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,
@@ -111,7 +111,7 @@ class CardSection extends StatelessWidget {
                                 width: 40,
                               ),
                               Text(
-                                '$hhmg_val',
+                                '$bp_val',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,
