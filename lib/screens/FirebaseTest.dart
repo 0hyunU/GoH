@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:goh/utils/const_data.dart';
 
 class FirebaseTest extends StatefulWidget {
   @override
@@ -47,6 +48,14 @@ class _FirebaseTest extends State<FirebaseTest> {
                     color: Colors.blue,
                     child: Text("hi"),
                     onPressed: () {
+                      fbfs
+                          .collection("ECG")
+                          .add({'datetime': DateTime.now(), 'ecg': ecg_list});
+                      fbfs.collection("BP").add({
+                        'datetime': DateTime.now(),
+                        'pulse': "30",
+                        'bp': "140/50"
+                      });
                       print("hi");
                       fbfs
                           .collection("books")
