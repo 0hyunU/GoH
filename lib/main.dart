@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       title: Constants.appName,
       theme: Constants.lighTheme(context),
       debugShowCheckedModeBanner: false,
-      home: FirebaseTest(),
-      // home: HomeScreen(),
+      // home: FirebaseTest(),
+      home: HomeScreen(),
     );
   }
 }

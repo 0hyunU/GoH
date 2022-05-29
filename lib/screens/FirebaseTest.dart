@@ -50,7 +50,7 @@ class _FirebaseTest extends State<FirebaseTest> {
                     onPressed: () {
                       fbfs
                           .collection("ECG")
-                          .add({'datetime': DateTime.now(), 'ecg': ecg_list});
+                          .add({'datetime': DateTime.now(), 'ecg': ecg_list,'class':''});
                       fbfs.collection("BP").add({
                         'datetime': DateTime.now(),
                         'pulse': "30",
