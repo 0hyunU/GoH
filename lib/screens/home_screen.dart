@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final tabs = [
     DashboardScreen(),
     TableBasicsExample(),
-    GraphPage(storage: AssetsStorage()),
+    GraphPage(),
     Center(
       child: Text(
         'Settings',
@@ -117,66 +117,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: _icon_size + 2, color: Colors.white),
             backgroundColor: Theme.of(context).accentColor,
             onPressed: () {
- 
             },
           ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
-  }
-}
-
-class AssetsStorage {
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-
-    return directory.path;
-  }
-
-  Future<String> getFromCSV() async {
-    print('hi');
-    final filename = new File(
-            "'/Users/0hyun/Desktop/flutter/flutter_test_proj/goh/goh/assets/icons/data.csv'")
-        .readAsStringSync();
-    print(filename);
-    return filename;
-  }
-
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    print('hi');
-    // var a = await rootBundle.load('/assets/data.csv');
-    // print(a);
-    print('$path');
-    print(path.runtimeType);
-    // getApplicationDocumentsDirectory.
-    print(File(
-            '/Users/0hyun/Desktop/flutter/flutter_test_proj/goh/goh/assets/icons/data.csv')
-        .exists());
-
-    return File(
-        '/Users/0hyun/Desktop/flutter/flutter_test_proj/goh/goh/assets/icons/data.csv');
-  }
-
-  Future<String> readCsv() async {
-    try {
-      final file = await _localFile;
-
-      // Read the file
-      final contents = await file.readAsString();
-
-      return contents;
-    } catch (e) {
-      // If encountering an error, return 0
-      return '';
-    }
-  }
-
-  Future<File> writeCounter(int counter) async {
-    final file = await _localFile;
-
-    // Write the file
-    return file.writeAsString('$counter');
   }
 }
