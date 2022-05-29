@@ -24,12 +24,11 @@ class GraphPage extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
-  GraphPage({super.key, required this.storage});
+  GraphPage({super.key});
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-  final AssetsStorage storage;
   @override
   _GraphPageState createState() => _GraphPageState();
 }
@@ -37,9 +36,9 @@ class GraphPage extends StatefulWidget {
 class _GraphPageState extends State<GraphPage> {
   late List<SalesData> _chartData;
   late TooltipBehavior _tooltipBehavior;
-  final _filepath =
-      "/Users/0hyun/Desktop/flutter/flutter_test_proj/mediapp/mediapp/assets/icons/data.csv";
-  String _filename = '';
+  // final _filepath =
+  //     "/Users/0hyun/Desktop/flutter/flutter_test_proj/mediapp/mediapp/assets/icons/data.csv";
+  // String _filename = '';
 
   // Future<void> getFromCSV() async {
   //   final filename = await DefaultAssetBundle.of(context).loadString(_filepath);
