@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-
+import 'package:goh/utils/const.dart';
 
 class MultiFloatButton extends StatelessWidget {
-  final double _icon_size = 28;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -16,7 +14,7 @@ class MultiFloatButton extends StatelessWidget {
         children: [
           SpeedDialChild(
             child: Image.asset('assets/icons/blooddrop.png',
-                height: _icon_size * 0.9, color: Colors.black),
+                height: Constants.iconSize * 0.9, color: Colors.black),
             //Icon(Icons.chrome_reader_mode, color: Colors.black),
             backgroundColor: Colors.white,
             onTap: () => print('blood pressure'),
@@ -26,9 +24,9 @@ class MultiFloatButton extends StatelessWidget {
             labelBackgroundColor: Colors.white,
           ),
           SpeedDialChild(
-            child: Icon(Icons.monitor_heart_outlined,color: Colors.black), 
+            child: Icon(Icons.monitor_heart_outlined, color: Colors.black),
             //Image.asset('assets/icons/heartbeat.png',
-                // height: _icon_size * 0.9, color: Colors.black),
+            // height: _icon_size * 0.9, color: Colors.black),
             //Icon(Icons.create, color: Colors.black),
             backgroundColor: Colors.white,
             onTap: () => print('ECG'),

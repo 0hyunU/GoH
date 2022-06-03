@@ -3,6 +3,7 @@ import 'package:goh/utils/const.dart';
 import 'package:goh/screens/DashboardScreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goh/widgets/cal_basic_example.dart';
+import 'package:goh/widgets/floating_button.dart';
 import 'package:goh/widgets/line_plot_sample.dart';
 import 'dart:io';
 import 'dart:async';
@@ -10,6 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:path_provider/path_provider.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -46,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final double _icon_size = 28;
+    
     return Scaffold(
       backgroundColor: Constants.backgroundColor,
       body: tabs[_currentIndex],
@@ -61,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             activeIcon:
-                Image.asset("assets/icons/menu.png", height: _icon_size),
+                Image.asset("assets/icons/menu.png", height: Constants.iconSize),
             // SvgPicture.asset(
             //   'assets/icons/apps.svg',
             //   height: 30,
@@ -69,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // ),
             label: "",
             icon: Image.asset("assets/icons/menu.png",
-                height: _icon_size, color: Colors.grey),
+                height: Constants.iconSize, color: Colors.grey),
             // SvgPicture.asset(
             //   'assets/icons/apps.svg',
             //   height: 30,
@@ -79,48 +81,36 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/icons/calendar.png',
-              height: _icon_size,
+              height: Constants.iconSize,
               color: Colors.grey,
             ),
             label: "",
             activeIcon: Image.asset(
               'assets/icons/calendar.png',
-              height: _icon_size,
+              height: Constants.iconSize,
             ),
           ),
           BottomNavigationBarItem(
             icon: Image.asset('assets/icons/bar-chart.png',
-                height: _icon_size, color: Colors.grey),
+                height: Constants.iconSize, color: Colors.grey),
             label: "",
             activeIcon: Image.asset(
               'assets/icons/bar-chart.png',
-              height: _icon_size,
+              height: Constants.iconSize,
             ),
           ),
           BottomNavigationBarItem(
             icon: Image.asset('assets/icons/setting.png',
-                height: _icon_size, color: Colors.grey),
+                height: Constants.iconSize, color: Colors.grey),
             label: "",
             activeIcon: Image.asset(
               'assets/icons/setting.png',
-              height: _icon_size,
+              height: Constants.iconSize,
             ),
           ),
         ],
       ),
-      floatingActionButton: Container(
-        height: 50,
-        width: 50,
-        child: FittedBox(
-          child: FloatingActionButton(
-            child: Image.asset('assets/icons/heartbeat.png',
-                height: _icon_size + 2, color: Colors.white),
-            backgroundColor: Theme.of(context).accentColor,
-            onPressed: () {
-            },
-          ),
-        ),
-      ),
+      floatingActionButton: MultiFloatButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }

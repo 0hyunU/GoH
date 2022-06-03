@@ -4,6 +4,8 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
+
+
 class CSV {
   static final line = Null;
   CSV() {
@@ -88,7 +90,7 @@ class Constants {
       ),
     );
   }
-
+  static double iconSize = 28;
   static double headerHeight = 228.5;
   static double paddingSide = 30.0;
 }
