@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:goh/utils/const.dart';
 import 'package:goh/screens/DashboardScreen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goh/widgets/cal_basic_example.dart';
 import 'package:goh/widgets/floating_button.dart';
 import 'package:goh/widgets/line_plot_sample.dart';
-import 'dart:io';
 import 'dart:async';
-import 'package:intl/intl.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:path_provider/path_provider.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -27,11 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DashboardScreen(),
     TableBasicsExample(),
     GraphPage(),
-    Center(
-      child: Text(
-        'Settings',
-      ),
-    ),
+    const Center(child: Text('Settings')),
   ];
 
   @override

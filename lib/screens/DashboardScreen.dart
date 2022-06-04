@@ -146,6 +146,7 @@ class DashboardScreen extends StatelessWidget {
                                               .map((e) => CardSection(
                                                   bp_val: e['class'],
                                                   pulse_val: e["class"])))
+                                          // widget type when no ECG data in DB                                                  
                                           : <Widget>[
                                               CardSection(
                                                   bp_val: "loading data ECG",

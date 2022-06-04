@@ -48,6 +48,7 @@ class _FirebaseTest extends State<FirebaseTest> {
                     color: Colors.blue,
                     child: Text("hi"),
                     onPressed: () {
+                      
                       fbfs
                           .collection("ECG")
                           .add({'datetime': DateTime.now(), 'ecg': ecg_list,'class':''});
@@ -56,6 +57,7 @@ class _FirebaseTest extends State<FirebaseTest> {
                         'pulse': "30",
                         'bp': "140/50"
                       });
+
                       print("hi");
                       fbfs
                           .collection("books")
