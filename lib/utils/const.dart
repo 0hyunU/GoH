@@ -4,7 +4,8 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
-
+const ML_API_URL =
+    'http://ec2-3-36-75-153.ap-northeast-2.compute.amazonaws.com:5001';
 
 class CSV {
   static final line = Null;
@@ -90,7 +91,8 @@ class Constants {
       ),
     );
   }
-  static double iconSize = 28;
+
+  static double iconSize = 28.0;
   static double headerHeight = 228.5;
   static double paddingSide = 30.0;
 }
