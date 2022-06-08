@@ -252,7 +252,7 @@ class DetailScreen extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "안녕하시렵니까?${dataLatestBP['class']}",
+                          "안녕하시렵니까?\n${dataLatestBP['class']}",
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold

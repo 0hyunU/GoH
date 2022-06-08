@@ -7,7 +7,11 @@ import 'package:goh/widgets/custom_clipper.dart';
 class ECGChart extends StatefulWidget {
   var ecg_data;
   ECGChart(ecg_list) {
-    ecg_data = ecg_list;
+    if (ecg_list.length > 12 * 31) {
+      ecg_data = ecg_list.sublist(0, 371);
+    } else {
+      ecg_data = ecg_list;
+    }
   }
   @override
   _ECGChart createState() => _ECGChart(ecg_data);
@@ -68,12 +72,17 @@ class _ECGChart extends State<ECGChart> {
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(color: Colors.black87, fontSize: 10);
     String text;
-    text = (value.toInt() / 12 < 31)?(value.toInt() / 12).toInt().toString() + '초':"";
+    text = (value.toInt() / 12 < 31)
+        ? (value.toInt() / 12).toInt().toString() + '초'
+        : "";
     return SideTitleWidget(
-      axisSide: meta.axisSide,
-      // child: Text(meta.formattedValue, style: style),
-      child: Text(text, style: style, textAlign: TextAlign.center,)
-    );
+        axisSide: meta.axisSide,
+        // child: Text(meta.formattedValue, style: style),
+        child: Text(
+          text,
+          style: style,
+          textAlign: TextAlign.center,
+        ));
   }
 
   @override

@@ -57,84 +57,86 @@ class _GraphPageState extends State<ECGListPage> {
         stream: db.collection('ECG').orderBy('stime').snapshots(),
         builder: (context, snapshotECG) {
           bool isLoadingECG = !snapshotECG.hasData;
-          return (isLoadingECG)? Stack():Stack(
-            children: <Widget>[
-            ClipPath(
-              clipper: MyCustomClipper(clipType: ClipType.bottom),
-              child: Container(
-                color: Theme.of(context).accentColor,
-                height: Constants.headerHeight + statusBarHeight,
-              ),
-            ),
-            Positioned(
-              right: -45,
-              top: -30,
-              child: ClipOval(
-                child: Container(
-                  color: Colors.black.withOpacity(0.05),
-                  height: 220,
-                  width: 220,
-                ),
-              ),
-            ),
-            Padding(
-                padding: EdgeInsets.all(Constants.paddingSide),
-                child: ListView(children: <Widget>[ 
-                SizedBox(
-                      height: Constants.headerHeight * 0.03),
-                
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(
-                          "Lee Yu Gyung님",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white),
-                        ),
-                      ),
-                      CircleAvatar(
-                          radius: 25.0,
-                          backgroundImage:
-                              AssetImage('assets/icons/woman.png'))
-                    ],
+          return (isLoadingECG)
+              ? Stack()
+              : Stack(children: <Widget>[
+                  ClipPath(
+                    clipper: MyCustomClipper(clipType: ClipType.bottom),
+                    child: Container(
+                      color: Theme.of(context).accentColor,
+                      height: Constants.headerHeight + statusBarHeight,
+                    ),
                   ),
-                ),
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(
-                          "심전도 그래프 리스트",
-                          style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.white),
+                  Positioned(
+                    right: -45,
+                    top: -30,
+                    child: ClipOval(
+                      child: Container(
+                        color: Colors.black.withOpacity(0.05),
+                        height: 220,
+                        width: 220,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(Constants.paddingSide),
+                      child: ListView(children: <Widget>[
+                        SizedBox(height: Constants.headerHeight * 0.03),
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Text(
+                                  "Lee Yu Gyung님",
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              CircleAvatar(
+                                  radius: 25.0,
+                                  backgroundImage:
+                                      AssetImage('assets/icons/woman.png'))
+                            ],
+                          ),
                         ),
-                      ),])),
-                SizedBox(height: 50),
-                Container(
-                  child: Column(
-                    children: !isLoadingECG
-                        ? List<Widget>.from(snapshotECG
-                            .data!.docs.reversed
-                            .map((e) =>CalECGHistory(
-                              e['stime']
-                                  .toDate()
-                                  .toString()
-                                  .substring(0, 10),
-                              e['class'],e['ecg'])))
+                        Container(
+                            child: Row(children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              "심전도 그래프 리스트",
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ])),
+                        SizedBox(height: 50),
+                        Container(
+                            child: Column(
+                          children: !isLoadingECG
+                              ? List<Widget>.from(snapshotECG
+                                  .data!.docs.reversed
+                                  .map((e) => CalECGHistory(
+                                      e['stime']
+                                          .toDate()
+                                          .toString()
+                                          .substring(0, 10),
+                                      e['class'],
+                                      e['ecg'] )))
 
-                    // widget type when no ECG data in DB
-                    : <Widget>[
-                        CardSection(
-                            bp_val: "loading data ECG",
-                            pulse_val: "loading data ECG")
-                      ],
-              )),]))
-          ]);
+                              // widget type when no ECG data in DB
+                              : <Widget>[
+                                  CardSection(
+                                      bp_val: "loading data ECG",
+                                      pulse_val: "loading data ECG")
+                                ],
+                        )
+                        ),
+                      ]))
+                ]);
         });
   }
 }
