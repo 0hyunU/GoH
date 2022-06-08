@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:intl/intl.dart';
-import 'dart:convert';
 import 'dart:io';
 import 'package:goh/utils/const_data.dart';
 import 'dart:async';
-import 'package:goh/screens/home_screen.dart';
-
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
 
@@ -20,11 +16,11 @@ Future<File> getImageFileFromAssets(String path) async {
   return file;
 }
 
-class GraphPage extends StatefulWidget {
+class GraphPageSample extends StatefulWidget {
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
-  GraphPage({super.key});
+  GraphPageSample({super.key});
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
@@ -33,7 +29,7 @@ class GraphPage extends StatefulWidget {
   _GraphPageState createState() => _GraphPageState();
 }
 
-class _GraphPageState extends State<GraphPage> {
+class _GraphPageState extends State<GraphPageSample> {
   late List<SalesData> _chartData;
   late TooltipBehavior _tooltipBehavior;
   // final _filepath =

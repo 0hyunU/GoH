@@ -78,9 +78,9 @@ class CardItems extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 0),
-                        (progress == 0 || progress == null)
-                              ? SizedBox(height:0) : SizedBox(height:0),
+                        // SizedBox(height: 0),
+                        // (progress == 0 || progress == null)
+                        //       ? SizedBox(height:0) : SizedBox(height:0),
                             // ? Text('Not started',
                             // style: TextStyle(
                             //     fontSize: 15,

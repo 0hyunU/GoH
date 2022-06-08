@@ -23,9 +23,11 @@ class CardSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return 
+    Align(
       alignment: Alignment.topLeft,
-      child: Container(
+      child: 
+      Container(
         margin: const EdgeInsets.only(right: 15.0),
         width: 300,
         decoration: new BoxDecoration(
@@ -50,10 +52,11 @@ class CardSection extends StatelessWidget {
             ),
             Padding(
                 padding: EdgeInsets.all(20.0),
-                child: ListView(scrollDirection: Axis.horizontal, children: <
-                    Widget>[
-                  Stack(children: <Widget>[
-                    Padding(
+                child: ListView(
+                  scrollDirection: Axis.horizontal, 
+                  children: <Widget>[
+                    Stack(children: <Widget>[
+                      Padding(
                         padding: EdgeInsets.all(0.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
