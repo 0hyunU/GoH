@@ -3,7 +3,7 @@ import 'package:goh/utils/const.dart';
 import 'package:goh/screens/DashboardScreen.dart';
 import 'package:goh/widgets/cal_basic_example.dart';
 import 'package:goh/widgets/floating_button.dart';
-import 'package:goh/widgets/line_plot_sample.dart';
+import 'package:goh/widgets/graphPage.dart';
 import 'dart:async';
 
 
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final tabs = [
     DashboardScreen(),
     TableBasicsExample(),
-    GraphPage(),
+    ECGListPage(),
     const Center(child: Text('Settings')),
   ];
 

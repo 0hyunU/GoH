@@ -1,35 +1,100 @@
 import 'package:flutter/material.dart';
-import 'package:goh/screens/FirebaseTest.dart';
 import 'package:goh/screens/home_screen.dart';
 import 'package:goh/utils/const.dart';
-import 'package:csv/csv.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'dart:convert';
-import 'dart:io';
-import 'dart:async';
+import 'dart:math';
+import 'package:fl_chart/fl_chart.dart';
 
 // void main() => print("hi");
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(MyApp());
   }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         // Remove the debug banner
+//         debugShowCheckedModeBanner: false,
+//         title: 'KindaCode.com',
+//         theme: ThemeData(
+//           primarySwatch: Colors.indigo,
+//         ),
+//         home: MyHomePage());
+//   }
+// }
+
+// class MyHomePage extends StatelessWidget {
+//   MyHomePage({Key? key}) : super(key: key);
+
+//   // Generate some dummy data for the cahrt
+//   // This will be used to draw the red line
+//   final List<FlSpot> dummyData1 = List.generate(8, (index) {
+//     return FlSpot(index.toDouble(), index * Random().nextDouble());
+//   });
+
+//   // This will be used to draw the orange line
+//   final List<FlSpot> dummyData2 = List.generate(8, (index) {
+//     return FlSpot(index.toDouble(), index * Random().nextDouble());
+//   });
+
+//   // This will be used to draw the blue line
+//   final List<FlSpot> dummyData3 = List.generate(8, (index) {
+//     return FlSpot(index.toDouble(), index * Random().nextDouble());
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Container(
+//           padding: const EdgeInsets.all(20),
+//           width: double.infinity,
+//           child: LineChart(
+//             LineChartData(
+//               borderData: FlBorderData(show: false),
+//               lineBarsData: [
+//                 // The red line
+//                 LineChartBarData(
+//                   spots: dummyData1,
+//                   isCurved: true,
+//                   barWidth: 3,
+//                   color: Colors.red,
+//                 ),
+//                 // The orange line
+//                 LineChartBarData(
+//                   spots: dummyData2,
+//                   isCurved: true,
+//                   barWidth: 3,
+//                   color:Colors.orange
+//                 ),
+//                 // The blue line
+//                 LineChartBarData(
+//                   spots: dummyData3,
+//                   isCurved: false,
+//                   barWidth: 3,
+//                   color:
+//                     Colors.blue
+//                 )
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final input = new File('assets/data.csv').openRead();
-    // final fields = input
-    //     .transform(utf8.decoder)
-    //     .transform(new CsvToListConverter())
-    //     .toList();
-    // print(fields);
-    // var a = CSV();
-    // print(a);
+
     return MaterialApp(
       title: Constants.appName,
       theme: Constants.lighTheme(context),
