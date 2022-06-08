@@ -16,7 +16,7 @@ class DetailScreen extends StatelessWidget {
 
     // For Grid Layout
     double _crossAxisSpacing = 16, _mainAxisSpacing = 16, _cellHeight = 150.0;
-    int _crossAxisCount = 2;
+    int _crossAxisCount = 1;
 
     double _width = (MediaQuery.of(context).size.width -
             ((_crossAxisCount - 1) * _crossAxisSpacing)) /
@@ -160,13 +160,11 @@ class DetailScreen extends StatelessWidget {
                           padding: EdgeInsets.all(20.0),
                           height: 400,
                           child: Column(
-                            children: 
-                            <Widget>[
+                            children: <Widget>[
                               // Rest Active Legend
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: 
-                                <Widget>[
+                                children: <Widget>[
                                   Container(
                                     margin: EdgeInsets.all(5.0),
                                     width: 10,
@@ -195,7 +193,6 @@ class DetailScreen extends StatelessWidget {
                                 child: ListView(
                                   scrollDirection: Axis.horizontal,
                                   children: a,
-
                                 ),
                               ),
                               SizedBox(height: 35),
@@ -224,79 +221,101 @@ class DetailScreen extends StatelessWidget {
                           ),
                         ), // added
                       ),
-                      // SizedBox(height: 30),
-                      // Container(
-                      //   child: new GridView.builder(
-                      //     shrinkWrap: true,
-                      //     primary: false,
-                      //     physics: NeverScrollableScrollPhysics(),
-                      //     gridDelegate:
-                      //         SliverGridDelegateWithFixedCrossAxisCount(
-                      //       crossAxisCount: _crossAxisCount,
-                      //       crossAxisSpacing: _crossAxisSpacing,
-                      //       mainAxisSpacing: _mainAxisSpacing,
-                      //       childAspectRatio: _aspectRatio,
-                      //     ),
-                      //     itemCount: 4,
-                      //     itemBuilder: (BuildContext context, int index) {
-                      //       switch (index) {
-                      //         case 0:
-                      //           return GridItem(
-                      //             status: "Rest",
-                      //             time: "4h 45m",
-                      //             value: "76",
-                      //             unit: "avg bpm",
-                      //             color: Constants.darkGreen,
-                      //             image: AssetImage("assets/icons/Heart.png"),
-                      //             remarks: "ok",
-                      //           );
-                      //           break;
-                      //         case 1:
-                      //           return GridItem(
-                      //               status: "Active",
-                      //               time: "30m",
-                      //               value: "82",
-                      //               unit: "avg bpm",
-                      //               color: Constants.darkOrange,
-                      //               image: AssetImage("assets/icons/Heart.png"),
-                      //               remarks: "ok");
-                      //           break;
-                      //         case 2:
-                      //           return GridItem(
-                      //               status: "Fitness Level",
-                      //               time: "",
-                      //               value: "82",
-                      //               unit: "avg bpm",
-                      //               color: Constants.darkOrange,
-                      //               image: AssetImage("assets/icons/Heart.png"),
-                      //               remarks: "Fit");
-                      //           break;
-                      //         case 3:
-                      //           return GridItem(
-                      //               status: "Endurance",
-                      //               time: "",
-                      //               value: "82",
-                      //               unit: "avg bpm",
-                      //               color: Constants.darkOrange,
-                      //               image:
-                      //                   AssetImage("assets/icons/Battery.png"),
-                      //               remarks: "Ok");
-                      //           break;
-                      //         default:
-                      //           return GridItem(
-                      //             status: "Rest",
-                      //             time: "4h 45m",
-                      //             value: "76",
-                      //             unit: "avg bpm",
-                      //             image: AssetImage("assets/icons/Heart.png"),
-                      //             remarks: "ok",
-                      //             color: Constants.darkOrange,
-                      //           );
-                      //           break;
-                      //       }
-                      //     },
-                      //   ),
-                      // ),
+                      SizedBox(height: 30),
+
+                      Container(
+                        child: new GridView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: _crossAxisCount,
+                            crossAxisSpacing: _crossAxisSpacing,
+                            mainAxisSpacing: _mainAxisSpacing,
+                            childAspectRatio: _aspectRatio,
+                          ),
+                          itemCount: 1,
+                          itemBuilder: (BuildContext context, int index) {
+                            switch (index) {
+                              case 0:
+                                return Container(
+                                  decoration: new BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10.0)),
+                                    shape: BoxShape.rectangle,
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(20),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "안녕하시렵니까?${dataLatestBP['class']}",
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold
+                          ),)
+                      ]
+                                    ))
+                                );
+                                // GridItem(
+                                //   status: "Rest",
+                                //   time: "4h 45m",
+                                //   value: "76",
+                                //   unit: "avg bpm",
+                                //   color: Constants.darkGreen,
+                                //   image: AssetImage("assets/icons/Heart.png"),
+                                //   remarks: "ok",
+                                // );
+                                break;
+                              // case 1:
+                              //   return GridItem(
+                              //       status: "Active",
+                              //       time: "30m",
+                              //       value: "82",
+                              //       unit: "avg bpm",
+                              //       color: Constants.darkOrange,
+                              //       image: AssetImage("assets/icons/Heart.png"),
+                              //       remarks: "ok");
+                              //   break;
+                              // case 2:
+                              //   return GridItem(
+                              //       status: "Fitness Level",
+                              //       time: "",
+                              //       value: "82",
+                              //       unit: "avg bpm",
+                              //       color: Constants.darkOrange,
+                              //       image: AssetImage("assets/icons/Heart.png"),
+                              //       remarks: "Fit");
+                              //   break;
+                              // case 3:
+                              //   return GridItem(
+                              //       status: "Endurance",
+                              //       time: "",
+                              //       value: "82",
+                              //       unit: "avg bpm",
+                              //       color: Constants.darkOrange,
+                              //       image:
+                              //           AssetImage("assets/icons/Battery.png"),
+                              //       remarks: "Ok");
+                              //   break;
+                              default:
+                                return GridItem(
+                                  status: "Rest",
+                                  time: "4h 45m",
+                                  value: "76",
+                                  unit: "avg bpm",
+                                  image: AssetImage("assets/icons/Heart.png"),
+                                  remarks: "ok",
+                                  color: Constants.darkOrange,
+                                );
+                                break;
+                            }
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
