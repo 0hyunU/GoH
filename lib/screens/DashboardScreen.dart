@@ -5,24 +5,67 @@ import 'package:goh/widgets/card_items.dart';
 import 'package:goh/widgets/card_main.dart';
 import 'package:goh/widgets/card_section.dart';
 import 'package:goh/widgets/custom_clipper.dart';
+import '../utils/server.dart';
+import '../widgets/cal_basic_example.dart';
+import '../widgets/ecg_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   final db = FirebaseFirestore.instance;
+
+  void addDB_getReq(db, data, table) {
+    var req_data;
+    if (table == 'BP') {
+      req_data = {};
+      req_data['age'] = 3;
+      var splt = data['bp'].split('/');
+      req_data['s_bp'] = splt[0];
+      req_data['d_bp'] = splt[1];
+    } else {
+      req_data = data['ecg'];
+    }
+    db.collection("$table").add(data).then((value) => {server.postReq(db, req_data, table.toLowerCase(), value.id, table)});
+    
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
     return StreamBuilder<QuerySnapshot>(
-        stream: db.collection('ECG').orderBy('datetime').snapshots(),
+        stream: db.collection('ECG').orderBy('stime').snapshots(),
         builder: (context, snapshotECG) {
           Map<String, dynamic>? dataLatestECG =
               snapshotECG.data?.docs.last.data() as Map<String, dynamic>?;
           bool isLoadingECG = !snapshotECG.hasData;
+
+          // server.postReq(test_bp_data, 'bp');
+          // server.postReq(ecg_list, 'ecg');
+          // addDB_getReq(
+          //     db,
+          //     {
+          //       'bp': '140/70',
+          //       'datetime': DateTime.now(),
+          //       'pulse': '70',
+          //       'class': '측정중'
+          //     },
+          //     "BP");
+          // addDB_getReq(
+          //     db,
+          //     {
+          //       'etime': DateTime.now(),
+          //       'stime': DateTime.now(),
+          //       'ecg': ecg_list,
+          //       'class': '측정중'
+          //     },
+          //     "ECG");
           return StreamBuilder<QuerySnapshot>(
             stream: db.collection('BP').orderBy('datetime').snapshots(),
             builder: (context, snapshotBP) {
               Map<String, dynamic>? dataLatestBP =
                   snapshotBP.data?.docs.last.data() as Map<String, dynamic>?;
               bool isLoadingBP = !snapshotBP.hasData;
+              // _callAPI();
+
               return isLoadingBP
                   ? Stack()
                   : Stack(children: <Widget>[
@@ -143,10 +186,14 @@ class DashboardScreen extends StatelessWidget {
                                       children: !isLoadingECG
                                           ? List<Widget>.from(snapshotECG
                                               .data!.docs.reversed
-                                              .map((e) => CardSection(
-                                                  bp_val: e['class'],
-                                                  pulse_val: e["class"])))
-                                          // widget type when no ECG data in DB                                                  
+                                              .map((e) => Align(
+                                                    alignment: Alignment.topLeft,
+                                                    child: ECGHistoryCard(
+                                                  sdate: e['stime'],
+                                                  edate: e['etime'],
+                                                  classi_class: e['class']))))
+
+                                          // widget type when no ECG data in DB
                                           : <Widget>[
                                               CardSection(
                                                   bp_val: "loading data ECG",
