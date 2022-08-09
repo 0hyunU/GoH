@@ -70,7 +70,10 @@ class ECGHistoryCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                ((cls_txt[0] == '동리듬(정상)') || (cls_txt[0] == '측정중')) ? cls_txt[0] : cls_txt[0],
+                                ((cls_txt[0] == '동리듬(정상)') ||
+                                        (cls_txt[0] == '측정중'))
+                                    ? cls_txt[0]
+                                    : cls_txt[0],
                                 style: TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.bold,
@@ -80,7 +83,7 @@ class ECGHistoryCard extends StatelessWidget {
                               Text(
                                 '${sdate.toDate().toString().substring(0, 10)}',
                                 style: TextStyle(
-                                    fontSize: 12, color: Constants.textPrimary),
+                                    fontSize: 10, color: Constants.textPrimary),
                               ),
                             ],
                           ),

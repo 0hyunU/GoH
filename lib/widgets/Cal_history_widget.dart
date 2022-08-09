@@ -20,88 +20,90 @@ class CalECGHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.all(3.0),
-        child: Container(
-            // margin: const EdgeInsets.only(right: 15),
-            height: 80,
-            width: 330,
-            decoration: new BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              shape: BoxShape.rectangle,
-              color: Colors.white,
-            ),
-            child: Stack(children: <Widget>[
-              Positioned(
-                child: ClipPath(
-                  clipper: MyCustomClipper(clipType: ClipType.halfCircle),
-                  child: Container(
-                    decoration: new BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      color: Constants.lightBlue.withOpacity(0.1),
+        child: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: Container(
+              // margin: const EdgeInsets.only(right: 15),
+              height: 80,
+              width: 330,
+              decoration: new BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                shape: BoxShape.rectangle,
+                color: Colors.white,
+              ),
+              child: Stack(children: <Widget>[
+                Positioned(
+                  child: ClipPath(
+                    clipper: MyCustomClipper(clipType: ClipType.halfCircle),
+                    child: Container(
+                      decoration: new BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        color: Constants.lightBlue.withOpacity(0.1),
+                      ),
+                      height: 100,
+                      width: 100,
                     ),
-                    height: 100,
-                    width: 100,
                   ),
                 ),
-              ),
-              Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(Icons.monitor_heart_outlined,
-                                  size: Constants.iconSize),
-                              Text('  ECG ',
-                                  style: TextStyle(
-                                      fontSize: 10, color: Constants.textDark)),
-                            ]),
-                        SizedBox(width: 30),
-                        Expanded(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    "$cls",
+                Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.monitor_heart_outlined,
+                                    size: Constants.iconSize),
+                                Text('  ECG ',
                                     style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold,
-                                        color: Constants.textPrimary),
-                                  ),
-                                  SizedBox(height: 1),
-                                  Text(
-                                    '$date',
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        color: Constants.textPrimary),
-                                  ),
-                                ],
-                              ),
-                            ]))
-                      ]))
-            ])),
-      ),
-      onTap: () {
-        //InkWell test code
-        // debugPrint("CARD main clicked. redirect to details page");
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ECGChart(ecgList)),
-        );
-      });
+                                        fontSize: 10,
+                                        color: Constants.textDark)),
+                              ]),
+                          SizedBox(width: 30),
+                          Expanded(
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      "$cls".substring(0, 3),
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold,
+                                          color: Constants.textPrimary),
+                                    ),
+                                    SizedBox(height: 1),
+                                    Text(
+                                      '$date',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Constants.textPrimary),
+                                    ),
+                                  ],
+                                ),
+                              ]))
+                        ]))
+              ])),
+        ),
+        onTap: () {
+          //InkWell test code
+          // debugPrint("CARD main clicked. redirect to details page");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ECGChart(ecgList)),
+          );
+        });
   }
 }
+
 Widget calBPHistory({pulse_val, bp_val}) {
   return Padding(
       padding: const EdgeInsets.all(3.0),
