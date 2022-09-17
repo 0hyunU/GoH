@@ -17,3 +17,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## Server Architecture
+[<img src="./proj_docs(goh_flutter)/app_architecture.png" width="700"/>](./proj_docs(goh_flutter)/app_architecture.png)
+
+## ECG Model Architecture
+[<img src="./proj_docs(goh_flutter)/flutter아키텍처/ECG_model_architecture.drawio-2.png" width="700"/>](./proj_docs(goh_flutter)/flutter아키텍처/ECG_model_architecture.drawio-2.png)
