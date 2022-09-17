@@ -26,8 +26,5 @@ samples, guidance on mobile development, and a full API reference.
 [<img src="./proj_docs(goh_flutter)/flutter아키텍처/ECG_model_architecture.drawio-2.png" width="700"/>](./proj_docs(goh_flutter)/flutter아키텍처/ECG_model_architecture.drawio-2.png)
 
 ## demo video
-<figure class="video_container">
-  <video controls="true" allowfullscreen="true">
-    <source src="./proj_docs(goh_flutter)/goh_simulation.mp4" type="video/mp4">
-  </video>
-</figure>
+
+![](./proj_docs(goh_flutter)/goh_simulation.mp4)
